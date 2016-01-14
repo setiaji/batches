@@ -19,3 +19,5 @@ net start %serviceName%
 :: 5) Restart the AOS service
 net stop %serviceName%
 net start %serviceName%
+
+:: Reff : https://daxknowledgepot.wordpress.com/2012/06/03/ax-2012-lights-out-system-compile/
