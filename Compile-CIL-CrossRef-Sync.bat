@@ -8,10 +8,14 @@ net stop %serviceName%
 net start %serviceName%
 
 :: 2) Perform a full system compile
-::%appPath% -aos2=%aosHost%:%aosPort% -startupcmd=CompileAll_+ -lazytableloading -lazyclassloading
+:: -startupcmd=CompileAll_+ this will take longer time as this option for Cross Reference
+:: %appPath% -aos2=%aosHost%:%aosPort% -startupcmd=CompileAll_+ -lazytableloading -lazyclassloading
+
+:: -startupcmd=CompileAll_+ this will take shorter time as this option without doin Cross Ref
+%appPath% -aos2=%aosHost%:%aosPort% -startupcmd=CompileAll_- -lazytableloading -lazyclassloading
 
 :: 3) Perform a full CIL compile
-::%appPath% -aos2=%aosHost%:%aosPort% -startupcmd=CompileIl -lazytableloading -lazyclassloading
+%appPath% -aos2=%aosHost%:%aosPort% -startupcmd=CompileIl -lazytableloading -lazyclassloading
 
 :: 4) Perform sync db
 %appPath% -aos2=%aosHost%:%aosPort% -startupcmd=Synchronize
